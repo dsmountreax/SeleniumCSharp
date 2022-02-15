@@ -4,8 +4,17 @@ namespace CSharpFundamentals
 {
     class Program
     {
+
+        public void getData()
+        {
+            Console.WriteLine("I am inside the method");
+        }
         static void Main(string[] args)
         {
+
+            Program p = new Program();
+            p.getData();
+
             Console.WriteLine("Hello World!");
             int a=4;
             Console.WriteLine("The number is: "+ a);
