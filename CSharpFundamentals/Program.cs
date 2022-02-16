@@ -4,7 +4,26 @@ namespace CSharpFundamentals
 {
     class Program : Program4
     {
+        String name;
+        String lastName;
 
+        // method default constructor
+
+        public Program(String name)
+        {
+            this.name = name;
+        }
+
+        public Program(String name, String lastName)
+        {
+            this.name = name;
+            this.lastName = lastName;
+        }
+
+        public void getName()
+        {
+            Console.WriteLine("My name is "+this.name);
+        }
         public void getData()
         {
             Console.WriteLine("I am inside the method");
@@ -12,8 +31,10 @@ namespace CSharpFundamentals
         static void Main(string[] args)
         {
 
-            Program p = new Program();
+            Program p = new Program("Rahul");
+            Program p1 = new Program("Enrique", "Oreiro");
             p.getData();
+            p.getName();
             p.setData();
 
             Console.WriteLine("Hello World!");
