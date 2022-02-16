@@ -2,7 +2,7 @@
 
 namespace CSharpFundamentals
 {
-    class Program
+    class Program : Program4
     {
 
         public void getData()
@@ -14,6 +14,7 @@ namespace CSharpFundamentals
 
             Program p = new Program();
             p.getData();
+            p.setData();
 
             Console.WriteLine("Hello World!");
             int a=4;
