@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpFundamentals", "CSharpFundamentals\CSharpFundamentals.csproj", "{EB6D7A9B-3C76-49E5-B080-3A3F45BB1B46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpFundamentals", "CSharpFundamentals\CSharpFundamentals.csproj", "{EB6D7A9B-3C76-49E5-B080-3A3F45BB1B46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NunitSeleniumLearning", "NunitSeleniumLearning\NunitSeleniumLearning.csproj", "{4F48302D-4C6F-4C02-B4BF-9950D1D91F08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EB6D7A9B-3C76-49E5-B080-3A3F45BB1B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB6D7A9B-3C76-49E5-B080-3A3F45BB1B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB6D7A9B-3C76-49E5-B080-3A3F45BB1B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F48302D-4C6F-4C02-B4BF-9950D1D91F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F48302D-4C6F-4C02-B4BF-9950D1D91F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F48302D-4C6F-4C02-B4BF-9950D1D91F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F48302D-4C6F-4C02-B4BF-9950D1D91F08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
