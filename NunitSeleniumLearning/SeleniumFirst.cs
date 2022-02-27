@@ -21,13 +21,17 @@ namespace NunitSeleniumLearning
             //WebDriverManager helps to download an manage the chromedriver
             new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
             driver = new ChromeDriver(); // invoke Chrome Browwser //IwebDriver is an interface
+            driver.Manage().Window.Maximize();
         }
 
         [Test]
         public void Test1()
         {
             driver.Url = "https://rahulshettyacademy.com/#/index";
-
+            TestContext.Progress.WriteLine(driver.Title); // Write anything in the output
+            TestContext.Progress.WriteLine(driver.Url);
+            driver.Close(); // 1 Window
+            //driver.Quit();  // 2 Window
         }
 }
 }
