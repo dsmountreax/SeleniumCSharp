@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +21,12 @@ namespace NunitSeleniumLearning
         {
             //chromedriver.exe on chrome browser
             //WebDriverManager helps to download an manage the chromedriver
-            new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
-            driver = new ChromeDriver(); // invoke Chrome Browwser //IwebDriver is an interface
+            //new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
+            //new WebDriverManager.DriverManager().SetUpDriver(new FirefoxConfig()); // Firefox configuration
+            new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
+            //driver = new ChromeDriver(); // invoke Chrome Browwser //IwebDriver is an interface
+            //driver = new FirefoxDriver();  // Remember to import selenium for this driver
+            driver = new EdgeDriver();
             driver.Manage().Window.Maximize();
         }
 
