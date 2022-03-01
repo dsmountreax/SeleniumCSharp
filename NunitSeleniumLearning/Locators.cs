@@ -21,6 +21,7 @@ namespace NunitSeleniumLearning
         {
             new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
             driver = new ChromeDriver();
+            driver.Manage().Timeouts().ImplicitWait=TimeSpan.FromSeconds(5);
             driver.Manage().Window.Maximize();
             driver.Url = "https://rahulshettyacademy.com/loginpagePractise/";
         }
@@ -33,7 +34,7 @@ namespace NunitSeleniumLearning
             driver.FindElement(By.CssSelector("#password")).SendKeys("Contraseña");
             driver.FindElement(By.CssSelector("#terms")).Click();
             driver.FindElement(By.CssSelector("#signInBtn")).Click();
-            Thread.Sleep(3000);
+            
             TestContext.Progress.WriteLine(driver.FindElement(By.CssSelector(".alert")).Text);
             IWebElement link = driver.FindElement(By.LinkText("Free Access to InterviewQues/ResumeAssistance/Material"));
             String hrefAttr=link.GetAttribute("href");
