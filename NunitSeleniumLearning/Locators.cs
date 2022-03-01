@@ -31,12 +31,14 @@ namespace NunitSeleniumLearning
         {
             driver.FindElement(By.CssSelector("#username")).SendKeys("usuario");
             driver.FindElement(By.CssSelector("#password")).SendKeys("Contraseña");
+            driver.FindElement(By.CssSelector("#terms")).Click();
             driver.FindElement(By.CssSelector("#signInBtn")).Click();
             Thread.Sleep(3000);
             TestContext.Progress.WriteLine(driver.FindElement(By.CssSelector(".alert")).Text);
             IWebElement link = driver.FindElement(By.LinkText("Free Access to InterviewQues/ResumeAssistance/Material"));
             String hrefAttr=link.GetAttribute("href");
-            
+            String expectedUrl = "https://rahulshettyacademy.com/#/documents-request";
+            Assert.AreEqual(expectedUrl,hrefAttr);
             driver.Close();
         }
 
