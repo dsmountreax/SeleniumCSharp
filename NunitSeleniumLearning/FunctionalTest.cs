@@ -44,8 +44,15 @@ namespace NunitSeleniumLearning
                 }
                 
             }
-            
-            
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(8));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions
+                .ElementToBeClickable(By.CssSelector("#okayBtn")));
+
+            driver.FindElement(By.CssSelector("#okayBtn")).Click();
+            Boolean result=driver.FindElement(By.CssSelector("[value='user']")).Selected;
+
+            Assert.That(result,Is.True); // class from Nunit
 
             driver.Close();
 
