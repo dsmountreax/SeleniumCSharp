@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace NunitSeleniumLearning
         {
             new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
             driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait=TimeSpan.FromSeconds(5);
+            //driver.Manage().Timeouts().ImplicitWait=TimeSpan.FromSeconds(3);
             driver.Manage().Window.Maximize();
             driver.Url = "https://rahulshettyacademy.com/loginpagePractise/";
         }
@@ -34,6 +35,11 @@ namespace NunitSeleniumLearning
             driver.FindElement(By.CssSelector("#password")).SendKeys("Contraseña");
             driver.FindElement(By.CssSelector("#terms")).Click();
             driver.FindElement(By.CssSelector("#signInBtn")).Click();
+            IWebElement signIn= driver.FindElement(By.CssSelector("#signInBtn"));
+            // new class for explicit wait
+            WebDriverWait wait = new WebDriverWait(driver,TimeSpan.FromSeconds(8));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions
+                .TextToBePresentInElementValue(signIn,"Sign In"));
             
             TestContext.Progress.WriteLine(driver.FindElement(By.CssSelector(".alert")).Text);
             IWebElement link = driver.FindElement(By.LinkText("Free Access to InterviewQues/ResumeAssistance/Material"));
