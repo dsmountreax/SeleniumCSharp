@@ -33,7 +33,21 @@ namespace NunitSeleniumLearning
             s.SelectByText("Teacher");
             s.SelectByValue("stud"); // zero index is equal at the first option
             s.SelectByIndex(2);
-            //driver.Close();
+
+            IList<IWebElement> rdos = driver.FindElements(By.CssSelector("[type='radio']"));
+            
+            foreach (IWebElement radioButton in rdos)
+            {
+                if(radioButton.GetAttribute("value").Equals("user"))
+                {
+                    radioButton.Click();
+                }
+                
+            }
+            
+            
+
+            driver.Close();
 
         }
 
