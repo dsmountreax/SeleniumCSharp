@@ -53,13 +53,21 @@ namespace NunitSeleniumLearning
             {
                 TestContext.Progress.WriteLine(name);
             }
-            /*
+            
             driver.FindElement(By.CssSelector("thead th:nth-child(1)")).Click();
+            // usar contains para seleccionar columna. 
+            
             ArrayList namesB = new ArrayList();
-            foreach (IWebElement VegFruitName in veggies)
+            
+            IList<IWebElement> eveggies = driver.FindElements(By.CssSelector("tr td:nth-child(1)"));
+            
+            foreach (IWebElement VegFruitName in eveggies)
             {
                 namesB.Add(VegFruitName.Text);
-            }*/
+            }
+
+            Assert.AreEqual(names,namesB);
+            
         }
 
     }
