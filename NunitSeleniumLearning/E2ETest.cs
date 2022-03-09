@@ -40,11 +40,14 @@ namespace NunitSeleniumLearning
             
             foreach( IWebElement product in products)
             {
-                TestContext.Progress.WriteLine(
-                    product.FindElement(By.CssSelector(".card-title a")).Text);
+                if(ExpectedProducts
+                    .Contains(product.FindElement(By.CssSelector(".card-title a")).Text))
+                {
+                    product.FindElement(By.CssSelector("button")).Click(); // scope
+                }
             }
             
-            //driver.FindElement(By.CssSelector(".nav-link.btn")).Click();
+            driver.FindElement(By.CssSelector(".nav-link.btn")).Click();
 
         }
 
