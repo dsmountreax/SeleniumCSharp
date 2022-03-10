@@ -89,6 +89,10 @@ namespace NunitSeleniumLearning
             js.ExecuteScript("arguments[0].scrollIntoView(true)",frameScroll);
             driver.SwitchTo().Frame("courses-iframe"); // id, name or index to switch
             driver.FindElement(By.LinkText("All Access Plan")).Click();
+            TestContext.Progress.WriteLine(driver.FindElement(By.CssSelector("h1")).Text);
+            driver.SwitchTo().DefaultContent();
+            TestContext.Progress.WriteLine(driver.FindElement(By.CssSelector("h1")).Text);
+
         }
 
     }
