@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,28 @@ namespace NunitSeleniumLearning
             TestContext.Progress
             .WriteLine(driver.FindElement(By.CssSelector("#autocomplete"))
             .GetAttribute("value"));
+        }
+
+        [Test]
+        public void test_Actions()
+        {
+            driver.Url="https://rahulshettyacademy.com/#/index";
+            Actions a = new Actions(driver);
+            a.MoveToElement(driver.FindElement(By.CssSelector("a.dropdown-toggle")))
+                .Perform();// corregit TODO
+            //driver.FindElement(By.XPath("//ul[@class='dropdown-menu']/li[1]/a")).Click();
+            a.MoveToElement(driver.FindElement(By.XPath("//ul[@class='dropdown-menu']/li[1]/a")))
+                .Perform(); // movimiento y click
+        }
+
+        [Test]
+        public void test_dragAndDrop()
+        {
+            Actions b = new Actions(driver);
+            driver.Url = "https://demoqa.com/droppable";
+            IWebElement source = driver.FindElement(By.CssSelector("#draggable"));
+            IWebElement target = driver.FindElement(By.CssSelector("#droppable"));
+            b.DragAndDrop(source,target).Perform();
         }
 
     }
