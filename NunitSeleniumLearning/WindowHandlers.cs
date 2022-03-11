@@ -26,11 +26,21 @@ namespace NunitSeleniumLearning
         [Test]
         public void WindowHandle()
         {
+            String parentWindowId = driver.CurrentWindowHandle;
             driver.FindElement(By.CssSelector(".blinkingText")).Click();
             Assert.AreEqual(2, driver.WindowHandles.Count);
             String childWindowName = driver.WindowHandles[1];
             driver.SwitchTo().Window(childWindowName);
-            TestContext.Progress.WriteLine(driver.FindElement(By.CssSelector(".red")).Text);
+            String text = driver.FindElement(By.CssSelector(".red")).Text;
+            TestContext.Progress.WriteLine(text);
+            String[] splittedText=text.Split("at");
+            String[] trimmedString=splittedText[1].Trim().Split(" ");
+            String email = "mentor@rahulshettyacademy.com";
+            Assert.AreEqual(email, trimmedString[0]);
+            driver.SwitchTo().Window(parentWindowId);
+            driver.FindElement(By.CssSelector("#username")).SendKeys(trimmedString[0]);
+
+            
 
         }
     }
