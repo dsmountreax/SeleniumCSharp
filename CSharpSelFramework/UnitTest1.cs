@@ -1,5 +1,5 @@
 using NUnit.Framework;
-
+// se instalaron selenium, webdriver, selenium extras, selenium web driver manager, selenium support
 namespace CSharpSelFramework
 {
     public class Tests
