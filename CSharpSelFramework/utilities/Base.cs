@@ -9,6 +9,7 @@ using WebDriverManager.DriverConfigs.Impl;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Edge;
+using System.Configuration;
 
 namespace CSharpSelFramework.utilities
 {
@@ -18,7 +19,10 @@ namespace CSharpSelFramework.utilities
         [SetUp]
         public void StartBrowser(){
 
-            InitBrowser("Chrome");
+            // se importa el paquete de configuration manager
+
+            String browserName=ConfigurationManager.AppSettings["browser"];
+            InitBrowser(browserName);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             driver.Manage().Window.Maximize();
