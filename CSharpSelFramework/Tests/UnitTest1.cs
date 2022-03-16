@@ -27,12 +27,14 @@ namespace CSharpSelFramework
         }
 
         [Test]
-        public void EndToEndFlow()
+        [TestCase("rahulshettyacademy", "learning")]
+        [TestCase("rahulshettyacademy", "learning")]
+        public void EndToEndFlow(String username,String password)
         {
             String[] ExpectedProducts = { "iphone X", "Blackberry" };
 
             LoginPage loginPage = new LoginPage(getDriver());
-            ProductsPage productsPage=loginPage.validLogin("rahulshettyacademy", "learning");
+            ProductsPage productsPage=loginPage.validLogin(username,password);
             productsPage.waitForPageToDisplay();
             IList<IWebElement> products = productsPage.getCards();
             
