@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebDriverManager.DriverConfigs.Impl;
+using CSharpSelFramework.pageObjects;
 
 
 
@@ -29,7 +30,11 @@ namespace CSharpSelFramework
         public void EndToEndFlow()
         {
             String[] ExpectedProducts = { "iphone X", "Blackberry" };
-            driver.FindElement(By.CssSelector("#username")).SendKeys("rahulshettyacademy");
+
+            LoginPage loginPage = new LoginPage(getDriver());
+            loginPage.getUserName().SendKeys("rahulshettyacademy");
+
+            /*driver.FindElement(By.CssSelector("#username")).SendKeys("rahulshettyacademy");
             driver.FindElement(By.CssSelector("#password")).SendKeys("learning");
             driver.FindElement(By.CssSelector("#signInBtn")).Click();
             By signInBtn = By.CssSelector("#signInBtn");
@@ -72,7 +77,8 @@ namespace CSharpSelFramework
             driver.FindElement(By.CssSelector(".btn-success")).Click();
             String expectedMessage = "Success!";
             String actualMessage = driver.FindElement(By.CssSelector("strong")).Text;
-            StringAssert.Contains(expectedMessage, actualMessage);
+            StringAssert.Contains(expectedMessage, actualMessage);*/
         }
+            
     }
 }

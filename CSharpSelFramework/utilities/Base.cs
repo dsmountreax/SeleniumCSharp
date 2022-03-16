@@ -1,9 +1,5 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using WebDriverManager.DriverConfigs.Impl;
 using OpenQA.Selenium.Chrome;
@@ -27,6 +23,11 @@ namespace CSharpSelFramework.utilities
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             driver.Manage().Window.Maximize();
             driver.Url = "https://rahulshettyacademy.com/loginpagePractise/";
+        }
+
+        public IWebDriver getDriver()
+        {
+            return driver;
         }
 
         public void InitBrowser(string browserName)
