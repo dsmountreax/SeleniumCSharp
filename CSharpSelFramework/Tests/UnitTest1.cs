@@ -33,11 +33,8 @@ namespace CSharpSelFramework
 
             LoginPage loginPage = new LoginPage(getDriver());
             loginPage.getUserName().SendKeys("rahulshettyacademy");
-
-            /*driver.FindElement(By.CssSelector("#username")).SendKeys("rahulshettyacademy");
-            driver.FindElement(By.CssSelector("#password")).SendKeys("learning");
-            driver.FindElement(By.CssSelector("#signInBtn")).Click();
-            By signInBtn = By.CssSelector("#signInBtn");
+            loginPage.validLogin("rahulshettyacademy", "learning");
+            /*
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(8));
             wait.Until(SeleniumExtras.WaitHelpers
                 .ExpectedConditions.InvisibilityOfElementLocated(signInBtn));
