@@ -14,6 +14,7 @@ namespace CSharpSelFramework.pageObjects
         IWebDriver driver;
         private By cardTitle = By.CssSelector(".card-title a");
         private By button = By.CssSelector("button");
+        private By signInBtn = By.CssSelector("#signInBtn");
         public ProductsPage(IWebDriver driver)
         {
             this.driver = driver;
@@ -27,7 +28,10 @@ namespace CSharpSelFramework.pageObjects
         [FindsBy(How = How.CssSelector, Using = "app-card")]
         private IList<IWebElement> cards;
 
-        private By signInBtn = By.CssSelector("#signInBtn");
+        [FindsBy(How = How.CssSelector, Using = ".nav-link.btn")]
+        private IWebElement checkOut;
+
+        
         public void waitForPageToDisplay()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(8));
@@ -48,6 +52,12 @@ namespace CSharpSelFramework.pageObjects
         public By getButton()
         {
             return button;
+        }
+
+        public CheckoutPage checkout()
+        {
+            checkOut.Click();
+            return new CheckoutPage(driver); 
         }
     }
 }

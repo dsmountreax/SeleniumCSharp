@@ -44,21 +44,23 @@ namespace CSharpSelFramework
                     product.FindElement(productsPage.getButton()).Click(); // scope
                 }
             }
-            /*
-            driver.FindElement(By.CssSelector(".nav-link.btn")).Click();
 
-            IList<IWebElement> checkoutCards = driver.FindElements(By.CssSelector("h4 a"));
-
+            CheckoutPage checkoutPage=productsPage.checkout();
+            
+            IList<IWebElement> checkoutCards = checkoutPage.getCheckoutCards();
+            
             String[] actualProduct = new String[2];
 
             for (int i = 0; i < checkoutCards.Count; i++)
             {
                 actualProduct[i] = checkoutCards[i].Text;
             }
-
+            /*
             Assert.AreEqual(ExpectedProducts, actualProduct);
 
             driver.FindElement(By.CssSelector(".btn-success")).Click();
+            checkoutPage.checkout();
+            /*
             driver.FindElement(By.CssSelector("#country")).SendKeys("ind");
             By country = By.LinkText("India");
             wait.Until(SeleniumExtras.WaitHelpers
