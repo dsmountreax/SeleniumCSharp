@@ -30,9 +30,9 @@ namespace CSharpSelFramework
         //[TestCase("rahulshettyacademy", "learning")] // se comenta en clase 47
         //[TestCase("rahulshettyacademy", "learning")] // se comenta en clase 47
         //[TestCaseSource("addTestDataConfig")] // se pueden unificar en un solo bracket como en la linea 29
-        public void EndToEndFlow(String username,String password)
+        public void EndToEndFlow(String username,String password, String[] productos)
         {
-            String[] ExpectedProducts = { "iphone X", "Blackberry" };
+            String[] ExpectedProducts = productos;
 
             LoginPage loginPage = new LoginPage(getDriver());
             ProductsPage productsPage=loginPage.validLogin(username,password);
@@ -78,11 +78,17 @@ namespace CSharpSelFramework
             StringAssert.Contains(expectedMessage, actualMessage);*/
         }
          
-        public static  IEnumerable<TestCaseData> addTestDataConfig()
+        public static IEnumerable<TestCaseData> addTestDataConfig()
         {
-            yield return new TestCaseData("rahulshettyacademy", "learning");
-            yield return new TestCaseData("rahulshettyacademy", "learning");
-            yield return new TestCaseData("rahulshettyacademy", "learning");
+            yield return new TestCaseData(getDataParser()
+                .extractData("username"), getDataParser().extractData("password")
+                ,getDataParser().extractDataArray("products"));
+            yield return new TestCaseData(getDataParser()
+                .extractData("username"), getDataParser().extractData("password")
+                , getDataParser().extractDataArray("products"));
+            yield return new TestCaseData(getDataParser()
+                .extractData("username"), getDataParser().extractData("password")
+                , getDataParser().extractDataArray("products"));
         }
     }
 }

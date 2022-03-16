@@ -7,6 +7,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Edge;
 using System.Configuration;
 
+
 namespace CSharpSelFramework.utilities
 {
     public class Base {
@@ -48,6 +49,11 @@ namespace CSharpSelFramework.utilities
                     driver = new EdgeDriver();
                     break;
             }
+        }
+
+        public static JsonReader getDataParser()
+        {
+            return new JsonReader();
         }
 
         [TearDown]
