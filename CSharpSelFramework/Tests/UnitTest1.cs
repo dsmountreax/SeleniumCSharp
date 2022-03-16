@@ -30,6 +30,11 @@ namespace CSharpSelFramework
         //[TestCase("rahulshettyacademy", "learning")] // se comenta en clase 47
         //[TestCase("rahulshettyacademy", "learning")] // se comenta en clase 47
         //[TestCaseSource("addTestDataConfig")] // se pueden unificar en un solo bracket como en la linea 29
+        // run all data sets of the Test method in parallel
+        // run all the test methods in one class parallel
+        // run all test files in project parallel
+
+        [Parallelizable(ParallelScope.All)] // all this combination in parallel
         public void EndToEndFlow(String username,String password, String[] productos)
         {
             String[] ExpectedProducts = productos;
