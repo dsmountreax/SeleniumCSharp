@@ -32,23 +32,19 @@ namespace CSharpSelFramework
             String[] ExpectedProducts = { "iphone X", "Blackberry" };
 
             LoginPage loginPage = new LoginPage(getDriver());
-            loginPage.getUserName().SendKeys("rahulshettyacademy");
-            loginPage.validLogin("rahulshettyacademy", "learning");
-            /*
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(8));
-            wait.Until(SeleniumExtras.WaitHelpers
-                .ExpectedConditions.InvisibilityOfElementLocated(signInBtn));
-            IList<IWebElement> products = driver.FindElements(By.CssSelector("app-card"));
-
+            ProductsPage productsPage=loginPage.validLogin("rahulshettyacademy", "learning");
+            productsPage.waitForPageToDisplay();
+            IList<IWebElement> products = productsPage.getCards();
+            
             foreach (IWebElement product in products)
             {
                 if (ExpectedProducts
-                    .Contains(product.FindElement(By.CssSelector(".card-title a")).Text))
+                    .Contains(product.FindElement(productsPage.getcardTitle()).Text))
                 {
-                    product.FindElement(By.CssSelector("button")).Click(); // scope
+                    product.FindElement(productsPage.getButton()).Click(); // scope
                 }
             }
-
+            /*
             driver.FindElement(By.CssSelector(".nav-link.btn")).Click();
 
             IList<IWebElement> checkoutCards = driver.FindElements(By.CssSelector("h4 a"));

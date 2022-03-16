@@ -47,12 +47,14 @@ namespace CSharpSelFramework.pageObjects
             return username;
         }
 
-        public void validLogin(string usuario, string contraseña)
+        public ProductsPage validLogin(string usuario, string contraseña)
         {
             username.SendKeys(usuario);
             password.SendKeys(contraseña);
             signInButton.Click();
-            
+
+            return new ProductsPage(driver);
+           
         }
 
 }
