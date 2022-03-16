@@ -26,9 +26,10 @@ namespace CSharpSelFramework
             Assert.Pass();
         }
 
-        [Test]
-        [TestCase("rahulshettyacademy", "learning")]
-        [TestCase("rahulshettyacademy", "learning")]
+        [Test, TestCaseSource("addTestDataConfig")]
+        //[TestCase("rahulshettyacademy", "learning")] // se comenta en clase 47
+        //[TestCase("rahulshettyacademy", "learning")] // se comenta en clase 47
+        //[TestCaseSource("addTestDataConfig")] // se pueden unificar en un solo bracket como en la linea 29
         public void EndToEndFlow(String username,String password)
         {
             String[] ExpectedProducts = { "iphone X", "Blackberry" };
@@ -76,6 +77,12 @@ namespace CSharpSelFramework
             String actualMessage = driver.FindElement(By.CssSelector("strong")).Text;
             StringAssert.Contains(expectedMessage, actualMessage);*/
         }
-            
+         
+        public static  IEnumerable<TestCaseData> addTestDataConfig()
+        {
+            yield return new TestCaseData("rahulshettyacademy", "learning");
+            yield return new TestCaseData("rahulshettyacademy", "learning");
+            yield return new TestCaseData("rahulshettyacademy", "learning");
+        }
     }
 }
