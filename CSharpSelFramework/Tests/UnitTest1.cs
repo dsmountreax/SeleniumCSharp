@@ -23,13 +23,16 @@ namespace CSharpSelFramework
                                          //previous parallelscope
     public class Tests : Base {
 
-        [Test]
+        [Test,Category("Smoke")]
         public void Test1()
         {
             Assert.Pass();
         }
 
-        [Test, TestCaseSource("addTestDataConfig")]
+        [Test, TestCaseSource("addTestDataConfig"),Category("Regression")]
+        // in cmd in project folder. dotnet test CSharpSelFramework.csproj
+        // dotnet test pathto.csproj KK(All tests)
+        // dotnet test CSharpSelFramework.csproj --filter TestCategory=Smoke
         //[TestCase("rahulshettyacademy", "learning")] // se comenta en clase 47
         //[TestCase("rahulshettyacademy", "learning")] // se comenta en clase 47
         //[TestCaseSource("addTestDataConfig")] // se pueden unificar en un solo bracket como en la linea 29
