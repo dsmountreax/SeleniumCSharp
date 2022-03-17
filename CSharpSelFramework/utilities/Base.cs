@@ -11,6 +11,9 @@ using System.Threading;
 namespace CSharpSelFramework.utilities
 {
     public class Base {
+
+        String browserName;
+
         //public IWebDriver driver;// se comenta esta linea porque no es un driver para paralelo
         public ThreadLocal<IWebDriver> driver = new ThreadLocal<IWebDriver>();// driver paralelo
 
@@ -18,8 +21,15 @@ namespace CSharpSelFramework.utilities
         public void StartBrowser(){
 
             // se importa el paquete de configuration manager
-
-            String browserName=ConfigurationManager.AppSettings["browser"];
+            //Configuration for cmd
+            // comando a ejecutar dotnet test CSharpSelFramework.csproj
+            // -- TestRunParameters.Parameter(name=\"browserName\",value=\"Firefox\")
+            browserName = TestContext.Parameters["browserName"];
+            if(browserName==null)
+            {
+                browserName = ConfigurationManager.AppSettings["browser"];
+            }
+            
             InitBrowser(browserName);
 
             driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
