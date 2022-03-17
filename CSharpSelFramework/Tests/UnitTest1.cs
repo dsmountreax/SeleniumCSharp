@@ -18,6 +18,9 @@ using CSharpSelFramework.pageObjects;
 // se instalaron selenium, webdriver, selenium extras, selenium web driver manager, selenium support
 namespace CSharpSelFramework
 {
+    //[Parallelizable(ParallelScope.Children)] // class level children are classes inside this class
+    [Parallelizable(ParallelScope.Self)] // use to run many classes at the same level. it replaced
+                                         //previous parallelscope
     public class Tests : Base {
 
         [Test]
@@ -34,7 +37,7 @@ namespace CSharpSelFramework
         // run all the test methods in one class parallel
         // run all test files in project parallel
 
-        [Parallelizable(ParallelScope.All)] // all this combination in parallel
+        [Parallelizable(ParallelScope.All)] // all this combination in parallel // testcase level
         public void EndToEndFlow(String username,String password, String[] productos)
         {
             String[] ExpectedProducts = productos;

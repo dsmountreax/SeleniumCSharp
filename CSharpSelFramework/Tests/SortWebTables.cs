@@ -10,8 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace NunitSeleniumLearning
+namespace CSharpSelFramework
 {
+    [Parallelizable(ParallelScope.Self)] // use to run many classes at the same level
     class SortWebTables
     {
         IWebDriver driver;
