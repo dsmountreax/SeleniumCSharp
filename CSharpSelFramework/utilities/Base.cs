@@ -7,12 +7,29 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Edge;
 using System.Configuration;
 using System.Threading;
+using System.IO;
+using AventStack.ExtentReports.Reporter;
+using AventStack.ExtentReports;
+using NUnit.Framework.Interfaces;
 
 namespace CSharpSelFramework.utilities
 {
     public class Base {
 
+        ExtentReports extent;
         String browserName;
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            String reportPath=projectDirectory + "//index.html";
+            var htmlReporter=new ExtentHtmlReporter(reportPath);
+            extent.AttachReporter(htmlReporter);
+            extent.AddSystemInfo("Host Name", "Local host");
+            extent.AddSystemInfo("Environment", "QA");
+            extent.AddSystemInfo("Username", "Rahul Sheety");
+        }
 
         //public IWebDriver driver;// se comenta esta linea porque no es un driver para paralelo
         public ThreadLocal<IWebDriver> driver = new ThreadLocal<IWebDriver>();// driver paralelo
@@ -20,6 +37,7 @@ namespace CSharpSelFramework.utilities
         [SetUp]
         public void StartBrowser(){
 
+            extent.CreateTest(TestContext.CurrentContext.Test.Name);
             // se importa el paquete de configuration manager
             //Configuration for cmd
             // comando a ejecutar dotnet test CSharpSelFramework.csproj
@@ -70,6 +88,16 @@ namespace CSharpSelFramework.utilities
         [TearDown]
         public void AfterTest()
         {
+            var status=TestContext.CurrentContext.Result.Outcome.Status;
+
+            if(status == TestStatus.Failed)
+            {
+
+            } else if (status==TestStatus.Passed)
+            {
+
+            }
+
             driver.Value.Quit();
         }
     }
